@@ -1,0 +1,114 @@
+
+Matplotlib imp functions
+# plt.plot( , )
+# plt.show()
+# plt.title("Line plot")
+# plt.xlabel("x.label")
+# plt.ylabel("y.label")
+# plt.grid(True)
+# plt.plot(x , y , color='g',linestyle=':',linewidth=3)
+           to plot 2 lines on a graph just fix indepandent ( x ) 
+              and follow the above command
+# plt.subplot(1,2,1)  #( rows , column , no of subGraph)
+# plt.bar(name,values) #(X Values, Y Values)
+# plt.barh(name,values) #(X Values, Y Values) 
+                                               barh for horizontal graph
+# plt.scatter(x,y,marker="*",c='g',s=100)   # (  ,  ,  ,  c=color, s=size)
+# plt.hist(data) # to find repeatetion of data  
+          bin to represent 1 bar   # to find repeatetion of data  ( any set which have bot x and y )
+
+# data=list([one,two,three])   # (first set ,2nd set, 3rd set)
+# plt.boxplot(data)             # candle like structure
+                   data is used to plot 3 column in a same graph
+# plt.violinplot(data)           # to find where frequency is high
+
+# plt.pie(quantity,labels=fruit,autopct='%0.1f%%',colors=['yellow','grey','blue','black'])
+# for donut shape
+'''plt.pie(quantity,labels=fruit
+        ,autopct='%0.1f%%',colors=['yellow','grey','blue','black'],radius=2)
+plt.pie([1],colors=['brown'],radius=1)'''
+
+
+Seaborn Imp functions
+
+#importing libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+%matplotlib inline
+palette= Blues_d , rocket , vlag
+plt.figure(figsize=(10,10))
+
+* Distribution Plots
+# displot
+// sns.distplot(x=data[“Sum of Attack”],color=”Orange”,kde=True,rug=True,hist=False);
+# histplot
+// sns.histplot(x=data[“Sum of Attack”],color=”Green”);
+# hist plot
+// plt.hist(x=data["Sum of Attack"],color="Red",bins=20);
+        # ,bins=10,kde=False,hist=False, vertical
+// df.hist()                          for histogram of every column
+
+# joint Distribution plot
+// sns.jointplot(x=data[“Sum of Attack”],y=data[“Defensive Strength”],kind='hex',color=”Red”);
+
+# palette= Blues_d , rocket , vlag
+
+* Density Plots:
+// sns.kdeplot(x=data[“Sum of Attack”],y=data[“Defensive Strength”])
+
+* Bar plot
+# sns.barplot(    ,     ,     # hue='event',style='event' )  , palette , color
+count plot
+sns.countplot(x=data.Pokemon_Type,palette=pkmn_type_colors);
+# sns.countplot(df['Defaulted?'])     
+         # use if there is logic ( 0,1 yes or no )
+pairplot:
+# sns.pairplot(pokemon, hue='Legendary')
+   sns.pairplot(match)
+
+* Heatmap
+// sns.heatmap(data.corr());# Rotate x-labels with the help of matplotlib
+// sns.heatmap(fin[['Employed','Defaulted?']].corr())
+// sns.heatmap(correlation,cbar=True, square=True,fmt='.2f',annot=True ,annot_kws={'size':8},cmap='Blues')
+
+* Scatter plot
+Tweaking with scatter plotsns.lmplot(x=’Attack Strength’, y=’Defensive Strength’, data=data,
+ fit_reg = False, #Deleting regression line
+ hue=”Generation”); #Separating as per pokemon generation
+plt.ylim(20,130);
+plt.xlim(25,125);
+
+*box plot (candles)
+# sns.boxplot(  ,    ,.....) linewidth=..    ,  hue='type1'
+sns.boxplot(data=stats_data,showfliers=False);
+
+# sns.lineplot(x='timepoint',y='signal',data=fari)    ,hue='event',style='event'
+sns.regplot(x='total_runs_x',y='ball_left',data=delvery_df)
+# plt.show()
+
+Violin plot
+sns.violinplot(x=data.Pokemon_Type, y = data[“Attack Strength”]);
+
+Swarmplot
+sns.swarmplot(x=data.Pokemon_Type,y=data[“Attack Strength”],palette=);
+
+* Overlying plot (combination of violen and Swarm plots )
+sns.violinplot(x=data.Pokemon_Type, y = data[“Attack Strength”],inner=None, );
+sns.swarmplot(x=”Pokemon_Type”,y=”Attack Strength”,data=data,color=’black’, #making points black alpha=0.5)
+
+inner=None : Remove the bars inside the violins
+
+alpha=0.5: makes points slightly transparent:Remember alpha value must be float,dont keep in “”
+
+You can find the references for seaborn color here : https://python-graph-gallery.com/100-calling-a-color-with-seaborn/
+
+* Factor Plots (separate swarm plot with generation like column )
+factplot= sns.factorplot(x="Pokemon_Type",y="Attack Strength",data=data,hue="Generation",col="Generation",kind="swarm");
+factplot.set_xticklabels(rotation=-45)
+
+
+
+
+
